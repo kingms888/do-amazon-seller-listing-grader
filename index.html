@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Amazon Seller Listing Grader – Instant SEO & Conversion Checker</title>
+    <meta name="description" content="Grade your Amazon listing in seconds. Get actionable feedback on title, bullet points, and backend keywords. Free Amazon SEO checker for seller central.">
+    <meta name="keywords" content="amazon listing optimization, amazon seo checker, product listing grader, amazon keyword tool, seller central helper">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.example.com/amazon-listing-grader" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Amazon Seller Listing Grader – Instant SEO Checker">
+    <meta property="og:description" content="Grade your listing in seconds: title, bullets, backend keywords. Free tool for Amazon sellers.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.example.com/amazon-listing-grader">
+    <meta name="twitter:card" content="summary_large_image">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+        body {
+            background: #f4f7fc;
+            color: #1e293b;
+            padding: 16px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 820px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+            padding: 24px 20px 32px;
+            margin: 12px 0 24px;
+        }
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            background: #2563eb;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+            text-transform: uppercase;
+        }
+        .subhead {
+            color: #475569;
+            margin-top: 8px;
+            font-size: 1rem;
+            border-left: 4px solid #2563eb;
+            padding-left: 14px;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            line-height: 1.4;
+        }
+        .ad-placeholder {
+            margin: 24px 0 16px;
+            background: #f1f5f9;
+            border-radius: 20px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            border: 1px dashed #cbd5e1;
+            font-size: 0.9rem;
+        }
+        .ad-placeholder span {
+            color: #334155;
+            font-weight: 500;
+        }
+        .ad-placeholder .ad-label {
+            background: #e2e8f0;
+            padding: 2px 12px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        .ad-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .ad-link:hover {
+            text-decoration: underline;
+        }
+        .card {
+            background: #ffffff;
+            border: 1px solid #e9eef3;
+            border-radius: 24px;
+            padding: 20px 18px;
+            margin: 24px 0 16px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .input-group {
+            margin-bottom: 18px;
+        }
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 6px;
+            color: #1e293b;
+        }
+        .input-group textarea, .input-group input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d1d9e6;
+            border-radius: 16px;
+            font-size: 0.95rem;
+            background: white;
+            transition: 0.2s;
+            resize: vertical;
+        }
+        .input-group textarea:focus, .input-group input:focus {
+            border-color: #2563eb;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+        }
+        .input-group textarea {
+            min-height: 70px;
+        }
+        .input-group .hint {
+            font-size: 0.75rem;
+            color: #64748b;
+            margin-top: 4px;
+        }
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            width: 100%;
+            max-width: 300px;
+            display: block;
+            margin: 8px auto 0;
+            box-shadow: 0 4px 8px rgba(37,99,235,0.2);
+        }
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: scale(1.02);
+        }
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+        .results-area {
+            margin-top: 28px;
+            padding: 16px 0 8px;
+            border-top: 2px solid #eef2f6;
+        }
+        .grade-card {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 16px 18px;
+            margin-bottom: 16px;
+            border-left: 5px solid #2563eb;
+        }
+        .grade-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .grade-card .score {
+            background: #2563eb;
+            color: white;
+            border-radius: 40px;
+            padding: 2px 14px;
+            font-size: 0.9rem;
+        }
+        .grade-card ul {
+            margin: 10px 0 0 18px;
+            list-style: disc;
+            color: #1e293b;
+        }
+        .grade-card li {
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+        }
+        .feedback-good {
+            color: #0b6e4f;
+        }
+        .feedback-warn {
+            color: #b45309;
+        }
+        .feedback-issue {
+            color: #b91c1c;
+        }
+        .affiliate-section {
+            background: #f1f5f9;
+            border-radius: 20px;
+            padding: 18px 20px;
+            margin: 28px 0 16px;
+            border: 1px solid #e2e8f0;
+        }
+        .affiliate-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .affiliate-section a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .affiliate-section a:hover {
+            text-decoration: underline;
+        }
+        .affiliate-item {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+        .privacy-note {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-align: center;
+            margin: 28px 0 8px;
+            padding: 10px 12px;
+            background: #f1f5f9;
+            border-radius: 40px;
+            display: inline-block;
+            width: auto;
+        }
+        footer {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.8rem;
+            margin-top: 16px;
+        }
+        .flex-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.5rem; }
+            .container { padding: 16px; }
+            .btn-primary { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>
+                📦 Listing Grader
+                <span class="badge">FREE</span>
+            </h1>
+            <div class="subhead">
+                Instant Amazon SEO &amp; conversion feedback — title, bullets, backend keywords
+            </div>
+        </header>
+
+        <!-- Ad placeholder (visible) -->
+        <div class="ad-placeholder">
+            <span><span class="ad-label">Ad</span> 🚀 Boost your rankings: <a href="#" class="ad-link" target="_blank" rel="sponsored noopener">Try SellerSprite Keyword Tool</a> (affiliate)</span>
+            <span style="font-size:0.75rem; color:#64748b;">—</span>
+        </div>
+
+        <!-- Core tool -->
+        <section class="card" aria-label="Listing grader input">
+            <h2>✍️ Enter your listing</h2>
+            <div class="input-group">
+                <label for="titleInput">Product Title</label>
+                <textarea id="titleInput" placeholder="e.g. Premium Stainless Steel Water Bottle 32oz – Double Wall Insulated, BPA Free, Leak Proof" rows="2" maxlength="500"></textarea>
+                <div class="hint">Amazon max ~200 characters. We check length, caps, and keywords.</div>
+            </div>
+            <div class="input-group">
+                <label for="bulletsInput">Bullet Points (one per line)</label>
+                <textarea id="bulletsInput" placeholder="Line 1: 100% BPA free &amp; dishwasher safe&#10;Line 2: Double wall vacuum insulation keeps drinks cold 24h&#10;Line 3: Leak proof lid with one-hand operation" rows="4"></textarea>
+                <div class="hint">Up to 5 bullets recommended. We check length, benefits, and keywords.</div>
+            </div>
+            <div class="input-group">
+                <label for="backendInput">Backend Keywords (search terms)</label>
+                <textarea id="backendInput" placeholder="insulated water bottle, stainless steel flask, gym bottle, leak proof, BPA free, cold drink" rows="2" maxlength="500"></textarea>
+                <div class="hint">Separate by spaces, no commas needed. Max ~250 bytes.</div>
+            </div>
+            <button class="btn-primary" id="gradeButton">⭐ Grade My Listing</button>
+        </section>
+
+        <!-- Results area -->
+        <div class="results-area" id="resultsArea" aria-live="polite">
+            <!-- dynamic results injected here -->
+        </div>
+
+        <!-- Affiliate / resource section -->
+        <div class="affiliate-section">
+            <h3>📚 Seller Resources (affiliate)</h3>
+            <div class="affiliate-item">
+                <span>🔍 <a href="#" target="_blank" rel="sponsored noopener">Helium 10 – Full Amazon Suite</a> – keyword research, listing optimization</span>
+            </div>
+            <div class="affiliate-item">
+                <span>📊 <a href="#" target="_blank" rel="sponsored noopener">Jungle Scout – Product Database</a> – find winning products</span>
+            </div>
+            <div class="affiliate-item">
+                <span>🏷️ <a href="#" target="_blank" rel="sponsored noopener">SellerSprite – Keyword Tool</a> – backend keyword analysis</span>
+            </div>
+            <p style="font-size:0.8rem; margin-top:8px; color:#475569;">Disclosure: We may earn a commission if you purchase through these links.</p>
+        </div>
+
+        <!-- Privacy note -->
+        <div class="privacy-note">
+            🔒 Events may be counted anonymously for product improvement. No personal data collected.
+        </div>
+        <footer>
+            &copy; 2025 Listing Grader – Amazon Seller Tool (unofficial)
+        </footer>
+    </div>
+
+    <script>
+        (function() {
+            "use strict";
+
+            // reportEvent: only sends if endpoint configured
+            window.reportEvent = function(name, payload) {
+                if (window.ORGANISM_METRICS_ENDPOINT && typeof window.ORGANISM_METRICS_ENDPOINT === 'string') {
+                    try {
+                        const body = JSON.stringify({ event: name, payload: payload, ts: Date.now() });
+                        fetch(window.ORGANISM_METRICS_ENDPOINT, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: body,
+                            keepalive: true
+                        }).catch(() => {});
+                    } catch (e) {
+                        // silently fail
+                    }
+                }
+            };
+
+            // DOM refs
+            const titleInput = document.getElementById('titleInput');
+            const bulletsInput = document.getElementById('bulletsInput');
+            const backendInput = document.getElementById('backendInput');
+            const gradeBtn = document.getElementById('gradeButton');
+            const resultsArea = document.getElementById('resultsArea');
+
+            // helper: clean and truncate
+            function getVal(el) {
+                return el.value.trim();
+            }
+
+            // grading engine
+            function gradeListing(title, bulletsText, backend) {
+                const grades = [];
+                let overallScore = 0;
+                const maxScore = 100;
+
+                // --- TITLE (40%) ---
+                let titleScore = 0;
+                const titleMax = 40;
+                const titleLower = title.toLowerCase();
+                const titleWords = title.split(/\s+/).filter(w => w.length > 0);
+
+                // length check
+                if (title.length === 0) {
+                    grades.push({ section: 'Title', score: 0, feedback: ['❌ Title is empty — add a clear product title.'], max: titleMax });
+                } else {
+                    const feedback = [];
+                    let pts = 20; // base
+
+                    if (title.length > 150) {
+                        feedback.push('⚠️ Title is long (>150 chars) — consider shortening for mobile.');
+                        pts -= 4;
+                    } else if (title.length < 30) {
+                        feedback.push('⚠️ Title is very short (<30 chars) — add more detail.');
+                        pts -= 6;
+                    } else {
+                        feedback.push('✅ Title length is good (30–150 chars).');
+                        pts += 2;
+                    }
+
+                    // capitalisation: first letter of each word should be capital (basic)
+                    const words = titleWords;
+                    let capOk = 0;
+                    for (let w of words) {
+                        if (w.length > 0 && w[0] === w[0].toUpperCase()) capOk++;
+                    }
+                    if (capOk / words.length >= 0.7) {
+                        feedback.push('✅ Good capitalisation (most words start with capital).');
+                        pts += 4;
+                    } else {
+                        feedback.push('⚠️ Improve capitalisation — use title case (e.g. "Premium Stainless Steel").');
+                        pts -= 2;
+                    }
+
+                    // keyword presence (generic product words)
+                    const kw = ['water', 'bottle', 'stainless', 'steel', 'insulated', 'bpa', 'free', 'leak', 'proof', 'premium', 'durable', '32oz', 'cup', 'lid', 'vacuum'];
+                    let foundKw = 0;
+                    for (let k of kw) {
+                        if (titleLower.includes(k)) foundKw++;
+                    }
+                    if (foundKw >= 3) {
+                        feedback.push('✅ Contains relevant product keywords (good for SEO).');
+                        pts += 8;
+                    } else {
+                        feedback.push('⚠️ Add more specific keywords (material, size, benefit).');
+                        pts -= 2;
+                    }
+
+                    // avoid generic stop words at start
+                    const stopStart = ['best', 'top', 'amazing', 'great', 'new', 'super'];
+                    const firstWord = words.length > 0 ? words[0].toLowerCase() : '';
+                    if (stopStart.includes(firstWord)) {
+                        feedback.push('⚠️ Avoid generic words like "' + firstWord + '" at start — be specific.');
+                        pts -= 2;
+                    } else {
+                        pts += 2;
+                    }
+
+                    // clamp
+                    titleScore = Math.min(titleMax, Math.max(0, pts));
+                    grades.push({ section: 'Title', score: titleScore, feedback: feedback, max: titleMax });
+                }
+
+                // --- BULLET POINTS (35%) ---
+                let bulletScore = 0;
+                const bulletMax = 35;
+                const bullets = bulletsText.split('\n').map(b => b.trim()).filter(b => b.length > 0);
+                const bulletFeedback = [];
+
+                if (bullets.length === 0) {
+                    bulletFeedback.push('❌ No bullet points — add at least 3 benefits.');
+                    grades.push({ section: 'Bullet Points', score: 0, feedback: bulletFeedback, max: bulletMax });
+                } else {
+                    let pts = 15;
+                    if (bullets.length >= 5) {
+                        bulletFeedback.push('✅ Great — you have 5 bullet points (Amazon max).');
+                        pts += 6;
+                    } else if (bullets.length >= 3) {
+                        bulletFeedback.push('✅ Good number of bullets (' + bullets.length + '). Add up to 5.');
+                        pts += 3;
+                    } else {
+                        bulletFeedback.push('⚠️ Only ' + bullets.length + ' bullet(s) — aim for 3–5.');
+                        pts -= 4;
+                    }
+
+                    // check each bullet length
+                    let shortBullets = 0;
+                    let longBullets = 0;
+                    for (let b of bullets) {
+                        if (b.length < 20) shortBullets++;
+                        if (b.length > 200) longBullets++;
+                    }
+                    if (shortBullets > 0) {
+                        bulletFeedback.push('⚠️ ' + shortBullets + ' bullet(s) too short (<20 chars) — add more detail.');
+                        pts -= 2;
+                    } else {
+                        pts += 2;
+                    }
+                    if (longBullets > 0) {
+                        bulletFeedback.push('⚠️ ' + longBullets + ' bullet(s) too long (>200 chars) — keep concise.');
+                        pts -= 2;
+                    } else {
+                        pts += 2;
+                    }
+
+                    // benefit oriented: look for power words
+                    const benefitWords = ['easy', 'perfect', 'ideal', 'great', 'durable', 'lightweight', 'comfortable', 'safe', 'fast', 'premium', 'quality', 'guaranteed', 'lifetime', 'warranty', 'free', 'leak', 'bpa', 'dishwasher', 'microwave'];
+                    let benefitCount = 0;
+                    for (let b of bullets) {
+                        const lower = b.toLowerCase();
+                        for (let bw of benefitWords) {
+                            if (lower.includes(bw)) {
+                                benefitCount++;
+                                break;
+                            }
+                        }
+                    }
+                    if (benefitCount >= 3) {
+                        bulletFeedback.push('✅ Strong benefit-oriented language detected.');
+                        pts += 6;
+                    } else {
+                        bulletFeedback.push('⚠️ Add more benefit words (e.g., "durable", "easy", "lifetime").');
+                        pts -= 2;
+                    }
+
+                    // keyword usage in bullets
+                    const kwBullet = ['water', 'bottle', 'insulated', 'stainless', 'leak', 'bpa', 'cold', 'hot', 'cup', 'lid', '32oz', 'travel', 'gym'];
+                    let kwFoundBullet = 0;
+                    const allBulletText = bullets.join(' ').toLowerCase();
+                    for (let k of kwBullet) {
+                        if (allBulletText.includes(k)) kwFoundBullet++;
+                    }
+                    if (kwFoundBullet >= 3) {
+                        bulletFeedback.push('✅ Bullets include relevant keywords.');
+                        pts += 4;
+                    } else {
+                        bulletFeedback.push('⚠️ Include more product keywords in bullets.');
+                        pts -= 1;
+                    }
+
+                    bulletScore = Math.min(bulletMax, Math.max(0, pts));
+                    grades.push({ section: 'Bullet Points', score: bulletScore, feedback: bulletFeedback, max: bulletMax });
+                }
+
+                // --- BACKEND KEYWORDS (25%) ---
+                let backendScore = 0;
+                const backendMax = 25;
+                const backendFeedback = [];
+                const backendClean = backend.replace(/[,\s]+/g, ' ').trim();
+                const backendWords = backendClean ? backendClean.split(/\s+/) : [];
+
+                if (backendClean.length === 0) {
+                    backendFeedback.push('❌ Backend keywords are empty — add search terms.');
+                    grades.push({ section: 'Backend Keywords', score: 0, feedback: backendFeedback, max: backendMax });
+                } else {
+                    let pts = 12;
+                    // length check (approx bytes)
+                    const byteLen = new Blob([backendClean]).size;
+                    if (byteLen > 250) {
+                        backendFeedback.push('⚠️ Backend keywords exceed ~250 bytes — trim to avoid truncation.');
+                        pts -= 4;
+                    } else if (byteLen < 50) {
+                        backendFeedback.push('⚠️ Backend keywords are short — add more relevant terms.');
+                        pts -= 2;
+                    } else {
+                        backendFeedback.push('✅ Backend keyword length is good.');
+                        pts += 4;
+                    }
+
+                    // check for duplicates
+                    const unique = new Set(backendWords.map(w => w.toLowerCase()));
+                    if (unique.size < backendWords.length) {
+                        backendFeedback.push('⚠️ Remove duplicate keywords — Amazon ignores repeats.');
+                        pts -= 2;
+                    } else {
+                        pts += 2;
+                    }
+
+                    // check for common filler
+                    const filler = ['and', 'the', 'for', 'with', 'new', 'best', 'top', 'amazon', 'buy', 'cheap', 'sale'];
+                    let fillerCount = 0;
+                    for (let w of backendWords) {
+                        if (filler.includes(w.toLowerCase())) fillerCount++;
+                    }
+                    if (fillerCount > 0) {
+                        backendFeedback.push('⚠️ Avoid filler words like "' + filler.slice(0,3).join(', ') + '" — waste of space.');
+                        pts -= 3;
+                    } else {
+                        pts += 3;
+                    }
+
+                    // keyword overlap with title/bullets
+                    const titleLower = title.toLowerCase();
+                    const bulletsLower = bullets.join(' ').toLowerCase();
+                    let overlap = 0;
+                    for (let w of backendWords) {
+                        const wl = w.toLowerCase();
+                        if (titleLower.includes(wl) || bulletsLower.includes(wl)) overlap++;
+                    }
+                    if (overlap > 0) {
+                        backendFeedback.push('⚠️ ' + overlap + ' backend keyword(s) already in title/bullets — use unique terms.');
+                        pts -= 2;
+                    } else {
+                        pts += 3;
+                    }
+
+                    backendScore = Math.min(backendMax, Math.max(0, pts));
+                    grades.push({ section: 'Backend Keywords', score: backendScore, feedback: backendFeedback, max: backendMax });
+                }
+
+                // total score
+                let total = 0;
+                let totalMax = 0;
+                for (let g of grades) {
+                    total += g.score;
+                    totalMax += g.max;
+                }
+                const percent = totalMax > 0 ? Math.round((total / totalMax) * 100) : 0;
+
+                return { grades, totalScore: total, maxScore: totalMax, percent };
+            }
+
+            // render results
+            function renderResults(result) {
+                let html = '';
+                const { grades, percent } = result;
+                let letter = 'F';
+                if (percent >= 90) letter = 'A+';
+                else if (percent >= 80) letter = 'A';
+                else if (percent >= 70) letter = 'B';
+                else if (percent >= 60) letter = 'C';
+                else if (percent >= 50) letter = 'D';
+                else letter = 'F';
+
+                html += `<div style="display:flex; align-items:center; gap:12px; margin-bottom:20px; flex-wrap:wrap;">
+                    <span style="font-size:2rem; font-weight:700;">${letter}</span>
+                    <span style="background:#eef2f6; padding:4px 16px; border-radius:40px; font-weight:600;">${percent}% Overall</span>
+                    <span style="font-size:0.85rem; color:#475569;">${result.totalScore}/${result.maxScore} points</span>
+                </div>`;
+
+                for (let g of grades) {
+                    let icon = '✅';
+                    const ratio = g.score / g.max;
+                    if (ratio < 0.4) icon = '❌';
+                    else if (ratio < 0.7) icon = '⚠️';
+                    html += `<div class="grade-card">
+                        <h3><span>${icon} ${g.section}</span> <span class="score">${g.score}/${g.max}</span></h3>
+                        <ul>`;
+                    for (let fb of g.feedback) {
+                        const cls = fb.startsWith('✅') ? 'feedback-good' : (fb.startsWith('⚠️') ? 'feedback-warn' : 'feedback-issue');
+                        html += `<li class="${cls}">${fb}</li>`;
+                    }
+                    html += `</ul></div>`;
+                }
+
+                // tips
+                html += `<div style="background:#f0fdf4; border-radius:16px; padding:14px 16px; margin-top:12px; border:1px solid #bbf7d0;">
+                    <strong>💡 Quick wins:</strong> 
+                    <span style="font-size:0.9rem;">Add front-end keywords, use benefit-driven bullets, and avoid keyword stuffing in backend.</span>
+                </div>`;
+
+                resultsArea.innerHTML = html;
+            }
+
+            // handle grading
+            function handleGrade() {
+                const title = getVal(titleInput);
+                const bullets = getVal(bulletsInput);
+                const backend = getVal(backendInput);
+
+                if (!title && !bullets && !backend) {
+                    resultsArea.innerHTML = `<div style="padding:20px; text-align:center; color:#64748b;">Please enter at least a title, bullet points, or backend keywords.</div>`;
+                    return;
+                }
+
+                const result = gradeListing(title, bullets, backend);
+                renderResults(result);
+
+                // report event (anonymized)
+                reportEvent('listing_graded', {
+                    titleLength: title.length,
+                    bulletCount: bullets.split('\n').filter(b => b.trim().length > 0).length,
+                    backendLength: backend.length,
+                    score: result.percent
+                });
+            }
+
+            // event listener
+            gradeBtn.addEventListener('click', handleGrade);
+
+            // allow enter key in textareas? not needed, but we keep simple
+
+            // initial placeholder
+            resultsArea.innerHTML = `<div style="padding:20px; text-align:center; color:#94a3b8;">Your listing grade will appear here.</div>`;
+
+            // report page view
+            reportEvent('page_view', { tool: 'listing_grader' });
+
+        })();
+    </script>
+
+<section data-organism-discovery="hub" style="margin:32px auto 20px;max-width:1040px;padding:16px;border-top:1px solid #d9e2ec;color:#475569;font:14px/1.5 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
+  <strong style="display:block;color:#0f172a;margin-bottom:6px">More free browser tools</strong>
+  <p style="margin:0 0 8px">This page is part of an autonomous micro-tool network. Explore the live tool directory and related utilities.</p>
+  <p style="margin:0"><a href="https://kingms888.github.io/do-digital-organism-index/" style="color:#0f766e;font-weight:700">Open the tool directory</a> </p>
+</section>
+</body>
+</html>
